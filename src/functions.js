@@ -655,13 +655,9 @@ export function decodeStructId(id){
     return { s: segments, a: c_action };
 }
 
-const tagDebug = false;
-export function tagEvent(event, data){
-    try {
-        data['debug_mode'] = tagDebug;
-        gtag('event', event, data);
-    } catch (err){}
-}
+// Analytics are disabled in this self-hosted fork; tagEvent remains a no-op
+// so gameplay call sites keep working without any external reporting.
+export function tagEvent(event, data){}
 
 export function resetResBuffer(){
     // During fastLoop, temporarily increase the maximum storage to avoid unfortunate cases where

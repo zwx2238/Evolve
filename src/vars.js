@@ -2181,11 +2181,8 @@ export function srSpeak(text, priority) {
 
 // executes a soft reset
 window.soft_reset = function reset(source){
-    try {
-        source = source && source === 'replicator' ? 'replicator' : 'soft';
-        gtag('event', 'reset', { 'end': source});
-    } catch (err){}
-    
+    source = source && source === 'replicator' ? 'replicator' : 'soft';
+
     if (!source){
         clearSavedMessages();
     }
@@ -2430,9 +2427,6 @@ export function clearStates(){
 
 // executes a hard reset
 window.reset = function reset(){
-    try {
-        gtag('event', 'reset', { 'end': 'hard'});
-    } catch (err){}
     localStorage.removeItem('evolved');
     global = null;
     if (webWorker.w){
